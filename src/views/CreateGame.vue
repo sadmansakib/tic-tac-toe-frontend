@@ -22,6 +22,7 @@
 <script>
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import { createGame } from "@/composables/network";
 
 export default {
   name: "CreateGame",
@@ -32,6 +33,7 @@ export default {
     const playerTwoType = store.getters.getPlayerTwoIsUsing;
     const boardSize = store.getters.getSize;
     const startGame = () => {
+      createGame(boardSize);
       router.push({ name: "playGame" });
     };
 
