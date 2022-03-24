@@ -89,7 +89,7 @@ export default {
 </script>
 <style lang="postcss" scoped>
 .cell {
-  @apply border border-white w-20 h-20 flex items-center justify-center text-4xl cursor-pointer;
+  @apply border border-white w-16 h-16 flex items-center justify-center text-4xl cursor-pointer;
 }
 
 .cell:hover {
