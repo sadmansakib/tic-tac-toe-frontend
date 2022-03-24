@@ -1,8 +1,9 @@
 import axios from "axios";
 import storage from "@/composables/storage";
 
-const BASE_URL = "http://localhost:8080/api/v1/tictactoe";
-const { saveGameID, getGameID } = storage();
+const BASE_URL = "https://tic-tac-toe-api-sadman.herokuapp.com/api/v1/tictactoe";
+
+const { getGameID } = storage();
 
 const request = axios.create({
   baseURL: BASE_URL,
@@ -12,12 +13,7 @@ const createGame = (boardSize) => {
   const data = {
     size: boardSize,
   };
-  request
-    .post("/create", data)
-    .then((r) => {
-      saveGameID(r.data.game_ID);
-    })
-    .catch((e) => console.error(e.message));
+  return request.post("/create", data);
 };
 
 const submitMoves = (moves) => {

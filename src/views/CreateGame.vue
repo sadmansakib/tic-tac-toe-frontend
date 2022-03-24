@@ -23,6 +23,7 @@
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { createGame } from "@/composables/network";
+import storage from "@/composables/storage";
 
 export default {
   name: "CreateGame",
@@ -32,9 +33,14 @@ export default {
     const playerOneType = store.getters.getPlayerOneIsUsing;
     const playerTwoType = store.getters.getPlayerTwoIsUsing;
     const boardSize = store.getters.getSize;
+    const { saveGameID } = storage();
     const startGame = () => {
-      createGame(boardSize);
-      router.push({ name: "playGame" });
+      createGame(boardSize)
+        .then((r) => {
+          saveGameID(r.data.game_ID);
+          router.push({ name: "playGame" });
+        })
+        .catch((e) => console.error(e.message));
     };
 
     return {
