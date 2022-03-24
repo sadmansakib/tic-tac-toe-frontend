@@ -70,9 +70,9 @@ export default {
           if (r.data.winner === null) {
             winningMessage.value = "Game drawn";
           } else if (r.data.winner === firstPlayer) {
-            winningMessage.value = `${firstPlayer}WON!`;
+            winningMessage.value = `${firstPlayer} WON!`;
           } else {
-            winningMessage.value = `${secondPlayer}WON!`;
+            winningMessage.value = `${secondPlayer} WON!`;
           }
         }
       });
